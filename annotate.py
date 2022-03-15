@@ -55,7 +55,7 @@ def generate_strings(sentence):
     set_strings = set()
     list_strings = []
 
-    for term_length in range(1, args.terminology_length):
+    for term_length in range(1, args.max_terminology_words):
         for i in range(len(sentence)):
             list_lemmas = []
 
@@ -72,41 +72,38 @@ def generate_strings(sentence):
 
 
 def annotate_files(dict_terms):
-    os.makedirs(args.output_path, exist_ok=True)
+    with open(args.data_path, "r", encoding="utf-8") as in_conllu_file:
+        sentences = conllu.parse(in_conllu_file.read())
 
-    for conllu_filename in os.listdir(args.data_path):
-        with open(os.path.join(args.data_path, conllu_filename), "r", encoding="utf-8") as conllu_file:
-            sentences = conllu.parse(conllu_file.read())
+    with open(args.output_path, "w", encoding="utf-8") as out_conllu_file:
+        for sentence in sentences:
+            if "global.columns" in sentence.metadata and args.column_name not in sentence.metadata["global.columns"]:
+                sentence.metadata["global.columns"] += " " + args.column_name
 
-        with open(os.path.join(args.output_path, conllu_filename), "w", encoding="utf-8") as conllu_file:
-            for sentence in sentences:
-                if "global.columns" in sentence.metadata:
-                    sentence.metadata["global.columns"] += " " + args.column_name.upper()
+            for token in sentence:
+                token[args.column_name.lower()] = "_"
 
-                for token in sentence:
-                    token[args.column_name] = "_"
+            list_sent_strings = generate_strings(sentence)
 
-                list_sent_strings = generate_strings(sentence)
+            term_counter = 1
+            for sent_string, start, end in list_sent_strings:
+                # print(sent_string, start, end)
 
-                term_counter = 1
-                for sent_string, start, end in list_sent_strings:
-                    # print(sent_string, start, end)
+                if sent_string in dict_terms:
+                    # print("----> ", sent_string, start, end)
+                    for token_idx in range(start, end):
+                        if sentence[token_idx][args.column_name.lower()] == "_":
+                            sentence[token_idx][args.column_name.lower()] = "{}:{}".format(
+                                term_counter, dict_terms[sent_string]
+                            )
+                        else:
+                            sentence[token_idx][args.column_name.lower()] += ",{}:{}".format(
+                                term_counter, dict_terms[sent_string]
+                            )
 
-                    if sent_string in dict_terms:
-                        # print("----> ", sent_string, start, end)
-                        for token_idx in range(start, end):
-                            if sentence[token_idx][args.column_name] == "_":
-                                sentence[token_idx][args.column_name] = "{}:{}".format(
-                                    term_counter, dict_terms[sent_string]
-                                )
-                            else:
-                                sentence[token_idx][args.column_name] += ",{}:{}".format(
-                                    term_counter, dict_terms[sent_string]
-                                )
+                    term_counter += 1
 
-                        term_counter += 1
-
-                conllu_file.write(sentence.serialize())
+            out_conllu_file.write(sentence.serialize())
 
 
 def main():
@@ -117,12 +114,12 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("data_path")
+    parser.add_argument("output_path")
     parser.add_argument("--terminology_path", default="data/IATE_export.csv")
     parser.add_argument("--lemma_path", default="data/tbl.wordform.ro")
-    parser.add_argument("--data_path", default="data/marcell")
-    parser.add_argument("--output_path", default="data/marcell_output")
-    parser.add_argument("--column_name", default="curlicat:iate")
-    parser.add_argument("--terminology_length", type=int, default=10)
+    parser.add_argument("--column_name", default="MARCELL:IATE")
+    parser.add_argument("--max_terminology_words", type=int, default=10)
 
     args = parser.parse_args()
 
