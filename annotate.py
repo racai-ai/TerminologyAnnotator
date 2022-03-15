@@ -10,17 +10,19 @@ def read_terminology(dict_lemmas):
     dict_terms = {}
 
     with open(args.terminology_path, "r", encoding="utf-8") as csv_file:
-        csv_reader = csv.DictReader(csv_file, delimiter='|')
+        csv_file.readline()
 
-        for row in csv_reader:
-            if row["L_CODE"] == "ro":
-                terminology = row["T_TERM"].lower()
+        for line in csv_file:
+            tokens = line.split("|")
+            if tokens[2] == "ro":
+                terminology = tokens[3].lower()
                 terminology = html.unescape(terminology)
                 terminology = terminology.replace("ţ", "ț").replace("ş", "ș")
                 terminology = re.sub(r'<.*?>', "", terminology)
+
                 terminology_lemma = " ".join([dict_lemmas.get(term, term) for term in terminology.split()])
 
-                dict_terms[terminology_lemma] = row["E_ID"]
+                dict_terms[terminology_lemma] = tokens[0]
 
     return dict_terms
 
