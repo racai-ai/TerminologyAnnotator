@@ -14,6 +14,8 @@ terminology to be used.
 One can also change the lemmas used by this script by changing the `lemma_path` parameter to point to another file. Also, the maximum number of words that can exist in
 a terminology can be adjusted using the `max_terminology_words` paramter.
 
+In addition, because a terminology can contain multiple languages, one can select the desired langauge using the `language` paramter.
+
 ***Important Note***: Please follow the format in the terminology file, so the script knows how to parse it. This implies using the same headers, separated by `|`, as 
 exemplified in `examples/terminology.csv`:
 
