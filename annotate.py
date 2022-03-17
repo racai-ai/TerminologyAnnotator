@@ -9,7 +9,7 @@ def read_terminology(dict_lemmas):
 
     with open(args.terminology_path, "r", encoding="utf-8") as csv_file:
         headers = csv_file.readline().strip().split("|")
-        dict_headers = {header: idx for header, idx in enumerate(headers)}
+        dict_headers = {header: idx for idx, header in enumerate(headers)}
 
         for line in csv_file:
             tokens = line.split("|")
