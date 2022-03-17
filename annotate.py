@@ -8,19 +8,20 @@ def read_terminology(dict_lemmas):
     dict_terms = {}
 
     with open(args.terminology_path, "r", encoding="utf-8") as csv_file:
-        csv_file.readline()
+        headers = csv_file.readline().strip().split("|")
+        dict_headers = {header: idx for header, idx in enumerate(headers)}
 
         for line in csv_file:
             tokens = line.split("|")
-            if tokens[2] == "ro":
-                terminology = tokens[3].lower()
+            if tokens[dict_headers["L_CODE"]] == args.terminology_langauge:
+                terminology = tokens[dict_headers["T_TERM"]].lower()
                 terminology = html.unescape(terminology)
                 terminology = terminology.replace("ţ", "ț").replace("ş", "ș")
                 terminology = re.sub(r'<.*?>', "", terminology)
 
                 terminology_lemma = " ".join([dict_lemmas.get(term, term) for term in terminology.split()])
 
-                dict_terms[terminology_lemma] = tokens[0]
+                dict_terms[terminology_lemma] = tokens[dict_headers["E_ID"]]
 
     return dict_terms
 
@@ -120,6 +121,7 @@ if __name__ == "__main__":
     parser.add_argument("--lemma_path", default="examples/tbl.wordform.ro")
     parser.add_argument("--column_name", default="CURLICAT:IATE")
     parser.add_argument("--max_terminology_words", type=int, default=10)
+    parser.add_argument("--terminology_langauge", default="ro")
 
     args = parser.parse_args()
 
