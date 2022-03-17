@@ -11,10 +11,9 @@ python annotate.py --data_path examples/input.conllup --output_path examples/out
 The `data_path` parameter points to the `.conllup` file to be annotated and `output_path` is the resulted `.conllup` file. The `terminology_path` parameter contains the
 terminology to be used.
 
-One can also change the lemmas used by this script by changing the `lemma_path` parameter to point to another file. Also, the maximum number of words that can exist in
-a terminology can be adjusted using the `max_terminology_words` paramter.
+One can also change the lemmas used by this script by changing the `lemma_path` parameter (defaults to `examples/tbl.wordform.ro`) to point to another file. Also, the maximum number of words that can exist in a terminology can be adjusted using the `max_terminology_words` paramter (defaults to `10`).
 
-In addition, because a terminology can contain multiple languages, one can select the desired langauge using the `terminology_langauge` paramter.
+In addition, because a terminology can contain multiple languages, one can select the desired langauge using the `terminology_langauge` paramter (defaults to `ro`).
 
 ***Important Note***: Please follow the format in the terminology file, so the script knows how to parse it. This implies using the same headers, separated by `|`, as 
 exemplified in `examples/terminology.csv`:
