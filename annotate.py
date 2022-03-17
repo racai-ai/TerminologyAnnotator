@@ -1,7 +1,5 @@
-import csv
 import argparse
 import html
-import os
 import re
 import conllu
 
