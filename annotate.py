@@ -118,9 +118,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("data_path")
     parser.add_argument("output_path")
-    parser.add_argument("--terminology_path", default="data/IATE_export.csv")
-    parser.add_argument("--lemma_path", default="data/tbl.wordform.ro")
-    parser.add_argument("--column_name", default="MARCELL:IATE")
+    parser.add_argument("--terminology_path", default="examples/terminology.csv")
+    parser.add_argument("--lemma_path", default="examples/tbl.wordform.ro")
+    parser.add_argument("--column_name", default="CURLICAT:IATE")
     parser.add_argument("--max_terminology_words", type=int, default=10)
 
     args = parser.parse_args()

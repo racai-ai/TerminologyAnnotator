@@ -1,0 +1,62 @@
+# global.columns = ID FORM LEMMA UPOS XPOS FEATS HEAD DEPREL DEPS MISC MARCELL:NE MARCELL:NP MARCELL:IATE MARCELL:EuroVoc MARCELL:EuroVocMT CURLICAT:IATE
+# newdoc id = ro-mj-1982-00000G2S7NT4H5PYVLU1MRPXNR8LZVMP
+# eurovoc = 48
+# title = MEMORANDUM 26/01/1982
+# date = 1982
+# type = MEMORANDUM
+# entype = MEMORANDUM
+# url = http://legislatie.just.ro/Public/FormaPrintabila/00000G2S7NT4H5PYVLU1MRPXNR8LZVMP
+# language = ro
+# sent_id = ro-mj-1982-00000G2S7NT4H5PYVLU1MRPXNR8LZVMP-s1
+# text = MEMORANDUM DE ÎNȚELEGERE din 26 ianuarie 1982
+1	MEMORANDUM	MEMORANDUM	NOUN	Ncms-n	Definite=Ind|Gender=Masc|Number=Sing	0	root	_	_	O	B-NP	_	_	_	_
+2	DE	de	ADP	Spsa	AdpType=Prep|Case=Acc	3	case	_	_	O	O	_	_	_	_
+3	ÎNȚELEGERE	înțelegere	NOUN	Ncfsrn	Case=Nom|Definite=Ind|Gender=Fem|Number=Sing	1	nmod	_	_	O	B-NP	_	_	_	_
+4	din	din	ADP	Spsa	AdpType=Prep|Case=Acc	6	case	_	_	O	O	_	_	_	_
+5	26	26	NUM	Mc-p-d	_	6	nummod	_	_	B-TIME	B-NP	_	_	_	_
+6	ianuarie	ianuarie	NOUN	Ncms-n	Definite=Ind|Gender=Masc|Number=Sing	3	nmod	_	_	I-TIME	I-NP	_	_	_	_
+7	1982	1982	NUM	Mc-p-d	_	6	nummod	_	_	I-TIME	I-NP	_	_	_	_
+
+# sent_id = ro-mj-1982-00000G2S7NT4H5PYVLU1MRPXNR8LZVMP-s2
+# text = de la Paris privind controlul statului portului
+1	de	de	ADP	Spsa	AdpType=Prep|Case=Acc	3	case	_	_	O	O	_	_	_	_
+2	la	la	ADP	Spsa	AdpType=Prep|Case=Acc	1	fixed	_	_	O	O	_	_	_	_
+3	Paris	Paris	PROPN	Np	_	0	root	_	_	B-PER	B-NP	1:1891427	_	1:72	1:11111
+4	privind	privind	ADP	Spsa	AdpType=Prep|Case=Acc	5	case	_	_	I-PER	O	_	_	_	_
+5	controlul	control	NOUN	Ncmsry	Case=Nom|Definite=Def|Gender=Masc|Number=Sing	3	nmod	_	_	I-PER	B-NP	2:3519385	_	2:4026	_
+6	statului	stat	NOUN	Ncmsoy	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	5	nmod	_	_	O	I-NP	3:793698;4:793870	_	3:0806,12;4:12,4821	2:22222
+7	portului	port	NOUN	Ncmsoy	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	6	nmod	_	_	O	I-NP	3:793698;4:793870	_	3:0806,12;4:12,4821	2:22222
+
+# sent_id = ro-mj-1982-00000G2S7NT4H5PYVLU1MRPXNR8LZVMP-s5
+# text = Conținut de ORDINUL nr. 262 din 27 februarie 2020, publicat în Monitorul Oficial, Partea I, nr. 196 din 11 martie 2020.
+1	Conținut	conține	VERB	Vmp--sm	Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_	O	B-NP	1:1337539	_	1:6811	_
+2	de	de	ADP	Spsa	AdpType=Prep|Case=Acc	3	case	_	_	O	O	_	_	_	_
+3	ORDINUL	ordin	NOUN	Ncmsry	Case=Nom|Definite=Def|Gender=Masc|Number=Sing	1	nmod:agent	_	_	B-ORG	B-NP	2:3553056	_	2:20,6621	1:33333
+4	nr.	nr.	NOUN	Yn	Abbr=Yes	3	nmod	_	_	I-ORG	I-NP	_	_	_	_
+5	262	262	NUM	Mc-p-d	_	4	nummod	_	_	O	I-NP	_	_	_	_
+6	din	din	ADP	Spsa	AdpType=Prep|Case=Acc	8	case	_	_	O	O	_	_	_	_
+7	27	27	NUM	Mc-p-d	_	8	nummod	_	_	B-TIME	B-NP	_	_	_	_
+8	februarie	februarie	NOUN	Ncms-n	Definite=Ind|Gender=Masc|Number=Sing	3	nmod	_	_	I-TIME	I-NP	_	_	_	_
+9	2020	2020	NUM	Mc-p-d	_	8	nummod	_	_	I-TIME	I-NP	_	_	_	_
+10	,	,	PUNCT	COMMA	_	11	punct	_	_	O	O	_	_	_	_
+11	publicat	publica	VERB	Vmp--sm	Gender=Masc|Number=Sing|VerbForm=Part	3	acl	_	_	O	O	3:319036	_	3:3226	_
+12	în	în	ADP	Spsa	AdpType=Prep|Case=Acc	13	case	_	_	O	O	_	_	_	_
+13	Monitorul	monitor	NOUN	Ncmsry	Case=Nom|Definite=Def|Gender=Masc|Number=Sing	11	obl	_	_	B-ORG	B-NP	4:3522817	_	4:3221,7206,7231	2:44444
+14	Oficial	oficial	ADJ	Afpms-n	Definite=Ind|Degree=Pos|Gender=Masc|Number=Sing	13	amod	_	_	I-ORG	I-NP	4:3522817	_	4:3221,7206,7231	2:44444
+15	,	,	PUNCT	COMMA	_	11	punct	_	_	B-LOC	O	_	_	_	_
+16	Partea	parte	NOUN	Ncfsry	Case=Nom|Definite=Def|Gender=Fem|Number=Sing	11	obj	_	_	I-LOC	B-NP	5:2227837	_	5:1021	_
+17	I	unu	NUM	Mo-s-r	Number=Sing|NumForm=Roman|NumType=Ord	16	nummod	_	_	I-LOC	I-NP	_	_	_	_
+18	,	,	PUNCT	COMMA	_	16	punct	_	_	O	O	_	_	_	_
+19	nr.	nr.	NOUN	Yn	Abbr=Yes	16	nmod	_	_	O	B-NP	_	_	_	_
+20	196	196	NUM	Mc-p-d	_	19	nummod	_	_	O	I-NP	_	_	_	_
+21	din	din	ADP	Spsa	AdpType=Prep|Case=Acc	23	case	_	_	O	O	_	_	_	_
+22	11	11	NUM	Mc-p-d	_	23	nummod	_	_	B-TIME	B-NP	_	_	_	_
+23	martie	martie	NOUN	Ncms-n	Definite=Ind|Gender=Masc|Number=Sing	16	nmod	_	_	I-TIME	I-NP	_	_	_	_
+24	2020	2020	NUM	Mc-p-d	_	23	nummod	_	_	I-TIME	I-NP	_	_	_	_
+25	.	.	PUNCT	PERIOD	_	1	punct	_	_	O	O	_	_	_	_
+
+# sent_id = ro-mj-1982-00000G2S7NT4H5PYVLU1MRPXNR8LZVMP-s6
+# text = Belgia;
+1	Belgia	Belgia	PROPN	Np	_	0	root	_	_	B-PER	B-NP	1:860970	_	1:72	1:55555
+2	;	;	PUNCT	SCOLON	_	1	punct	_	_	O	O	_	_	_	_
+
