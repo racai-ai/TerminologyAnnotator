@@ -1,6 +1,6 @@
-E_ID|E_DOMAINS|L_CODE|T_TERM|T_TYPE|T_RELIABILITY|T_EVALUATION
-11111|domain|ro|Paris|Term|Reliable|
-22222|domain|ro|statului portului|Term|Reliable|
-33333|domain|ro|ordinul|Term|Reliable|
-44444|domain|ro|Monitorul Oficial|Term|Reliable|
-55555|domain|ro|Belgia|Term|Reliable|
+E_ID|L_CODE|T_TERM|
+11111|ro|Paris|
+22222|ro|statului portului|
+33333|ro|ordinul|
+44444|ro|Monitorul Oficial|
+55555|ro|Belgia|
