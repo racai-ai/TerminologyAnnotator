@@ -25,4 +25,4 @@ E_ID|L_CODE|T_TERM|
 44444|ro|Monitorul Oficial|
 55555|ro|Belgia|
 ```
-The terminology file can have any number of header but the three above must be present (i.e. `E_ID`, `L_CODE`, `T_TERM`).
+The terminology file can have any number of headers, but the three presented above must be present (i.e. `E_ID`, `L_CODE`, `T_TERM`).
