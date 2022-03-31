@@ -13,7 +13,7 @@ def read_terminology(dict_lemmas):
 
         for line in csv_file:
             tokens = line.split("|")
-            if tokens[dict_headers["L_CODE"]] == args.terminology_langauge:
+            if tokens[dict_headers["L_CODE"]] == args.terminology_language:
                 terminology = tokens[dict_headers["T_TERM"]].lower()
                 terminology = html.unescape(terminology)
                 terminology = terminology.replace("ţ", "ț").replace("ş", "ș")
@@ -121,7 +121,7 @@ if __name__ == "__main__":
     parser.add_argument("--lemma_path", default="examples/tbl.wordform.ro")
     parser.add_argument("--column_name", default="CURLICAT:IATE")
     parser.add_argument("--max_terminology_words", type=int, default=10)
-    parser.add_argument("--terminology_langauge", default="ro")
+    parser.add_argument("--terminology_language", default="ro")
 
     args = parser.parse_args()
 
