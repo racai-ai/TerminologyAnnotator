@@ -6,6 +6,7 @@ import conllu
 
 def read_terminology(dict_lemmas):
     dict_terms = {}
+    dict_terms_type = {}
 
     with open(args.terminology_path, "r", encoding="utf-8") as csv_file:
         headers = csv_file.readline().strip().split("|")
@@ -19,11 +20,12 @@ def read_terminology(dict_lemmas):
                 terminology = terminology.replace("ţ", "ț").replace("ş", "ș")
                 terminology = re.sub(r'<.*?>', "", terminology)
 
-                terminology_lemma = " ".join([dict_lemmas.get(term, term) for term in terminology.split()])
+                terminology_lemma = " ".join([dict_lemmas.get(term, term) for term in terminology.split()]).lower()
 
                 dict_terms[terminology_lemma] = tokens[dict_headers["E_ID"]]
+                dict_terms_type[terminology_lemma] = tokens[dict_headers["T_TYPE"]]
 
-    return dict_terms
+    return dict_terms, dict_terms_type
 
 
 def filter_word(word):
@@ -72,7 +74,7 @@ def generate_strings(sentence):
     return list_strings
 
 
-def annotate_files(dict_terms):
+def annotate_files(dict_terms, dict_terms_type):
     with open(args.data_path, "r", encoding="utf-8") as in_conllu_file:
         sentences = conllu.parse(in_conllu_file.read())
 
@@ -91,6 +93,9 @@ def annotate_files(dict_terms):
                 # print(sent_string, start, end)
 
                 if sent_string in dict_terms:
+                    if dict_terms_type[sent_string] == "Abbrev" and (sentence[start]["lemma"].islower() or end - start != 1):
+                        continue
+
                     # print("----> ", sent_string, start, end)
                     for token_idx in range(start, end):
                         if sentence[token_idx][args.column_name.lower()] == "_":
@@ -109,8 +114,8 @@ def annotate_files(dict_terms):
 
 def main():
     dict_lemmas = read_lemmas()
-    dict_terms = read_terminology(dict_lemmas)
-    annotate_files(dict_terms)
+    dict_terms, dict_terms_type = read_terminology(dict_lemmas)
+    annotate_files(dict_terms, dict_terms_type)
 
 
 if __name__ == "__main__":
