@@ -4,17 +4,17 @@ import re
 import conllu
 
 
-def read_terminology(dict_lemmas):
+def read_terminology(terminology_path, dict_lemmas, terminology_language="ro"):
     dict_terms = {}
     dict_terms_type = {}
 
-    with open(args.terminology_path, "r", encoding="utf-8") as csv_file:
+    with open(terminology_path, "r", encoding="utf-8") as csv_file:
         headers = csv_file.readline().strip().split("|")
         dict_headers = {header: idx for idx, header in enumerate(headers)}
 
         for line in csv_file:
             tokens = line.split("|")
-            if tokens[dict_headers["L_CODE"]] == args.terminology_language:
+            if tokens[dict_headers["L_CODE"]] == terminology_language:
                 terminology = tokens[dict_headers["T_TERM"]].lower()
                 terminology = html.unescape(terminology)
                 terminology = terminology.replace("ţ", "ț").replace("ş", "ș")
@@ -36,10 +36,10 @@ def filter_word(word):
     return word
 
 
-def read_lemmas():
+def read_lemmas(lemma_path):
     dict_lemmas = {}
 
-    with open(args.lemma_path, "r", encoding="utf-8") as file:
+    with open(lemma_path, "r", encoding="utf-8") as file:
         for line in file:
             if line[0] not in ["&", "#"]:
                 tokens = line.split()
@@ -54,7 +54,7 @@ def read_lemmas():
     return dict_lemmas
 
 
-def generate_strings(sentence):
+def generate_strings(sentence, dict_lemmas):
     set_strings = set()
     list_strings = []
 
@@ -64,7 +64,12 @@ def generate_strings(sentence):
 
             for j in range(0, term_length):
                 if i + j < len(sentence):
-                    list_lemmas.append(sentence[i + j]["lemma"].lower())
+                    word = filter_word(sentence[i + j]["form"].lower())
+                    if word in dict_lemmas:
+                        list_lemmas.append(dict_lemmas[word].lower())
+                    else:
+                        list_lemmas.append(sentence[i + j]["lemma"].lower())
+
                     sent_string = " ".join(list_lemmas)
 
                     if (sent_string, i, i + j + 1) not in set_strings:
@@ -74,7 +79,7 @@ def generate_strings(sentence):
     return list_strings
 
 
-def annotate_files(dict_terms, dict_terms_type):
+def annotate_files(dict_terms, dict_terms_type, dict_lemmas):
     with open(args.data_path, "r", encoding="utf-8") as in_conllu_file:
         sentences = conllu.parse(in_conllu_file.read())
 
@@ -86,7 +91,7 @@ def annotate_files(dict_terms, dict_terms_type):
             for token in sentence:
                 token[args.column_name.lower()] = "_"
 
-            list_sent_strings = generate_strings(sentence)
+            list_sent_strings = generate_strings(sentence, dict_lemmas)
 
             term_counter = 1
             for sent_string, start, end in list_sent_strings:
@@ -113,9 +118,9 @@ def annotate_files(dict_terms, dict_terms_type):
 
 
 def main():
-    dict_lemmas = read_lemmas()
-    dict_terms, dict_terms_type = read_terminology(dict_lemmas)
-    annotate_files(dict_terms, dict_terms_type)
+    dict_lemmas = read_lemmas(args.lemma_path)
+    dict_terms, dict_terms_type = read_terminology(args.terminology_path, dict_lemmas, args.terminology_language)
+    annotate_files(dict_terms, dict_terms_type, dict_lemmas)
 
 
 if __name__ == "__main__":
