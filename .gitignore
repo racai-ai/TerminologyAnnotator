@@ -1,6 +1,8 @@
 .idea/
 
 data/
+examples/annotations
+results/
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,windows,linux,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,windows,linux,macos
 

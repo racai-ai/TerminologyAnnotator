@@ -24,8 +24,8 @@
 3	Paris	Paris	PROPN	Np	_	0	root	_	_	B-PER	B-NP	1:1891427	_	1:72	1:11111
 4	privind	privind	ADP	Spsa	AdpType=Prep|Case=Acc	5	case	_	_	I-PER	O	_	_	_	_
 5	controlul	control	NOUN	Ncmsry	Case=Nom|Definite=Def|Gender=Masc|Number=Sing	3	nmod	_	_	I-PER	B-NP	2:3519385	_	2:4026	_
-6	statului	stat	NOUN	Ncmsoy	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	5	nmod	_	_	O	I-NP	3:793698;4:793870	_	3:0806,12;4:12,4821	2:22222
-7	portului	port	NOUN	Ncmsoy	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	6	nmod	_	_	O	I-NP	3:793698;4:793870	_	3:0806,12;4:12,4821	2:22222
+6	statului	stat	NOUN	Ncmsoy	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	5	nmod	_	_	O	I-NP	3:793698;4:793870	_	3:0806,12;4:12,4821	2:66666
+7	portului	port	NOUN	Ncmsoy	Case=Gen|Definite=Def|Gender=Masc|Number=Sing	6	nmod	_	_	O	I-NP	3:793698;4:793870	_	3:0806,12;4:12,4821	2:66666
 
 # sent_id = ro-mj-1982-00000G2S7NT4H5PYVLU1MRPXNR8LZVMP-s5
 # text = Conținut de ORDINUL nr. 262 din 27 februarie 2020, publicat în Monitorul Oficial, Partea I, nr. 196 din 11 martie 2020.
