@@ -19,11 +19,12 @@ In addition, because a terminology can contain multiple languages, one can selec
 exemplified in `examples/terminology.csv`:
 
 ```
-E_ID|L_CODE|T_TERM|
-11111|ro|Paris|
-22222|ro|statului portului|
-33333|ro|ordinul|
-44444|ro|Monitorul Oficial|
-55555|ro|Belgia|
+E_ID|L_CODE|T_TERM|T_TYPE|
+11111|ro|Paris|Term|
+22222|ro|statului portului|Term|
+33333|ro|ordinul|Term|
+44444|ro|Monitorul Oficial|Term|
+55555|ro|Belgia|Term|
+66666|en|CFR|Abbrev|
 ```
-The terminology file can have any number of headers, but the three presented above must be present (i.e. `E_ID`, `L_CODE`, `T_TERM`).
+The terminology file can have any number of headers, but the three presented above must be present (i.e. `E_ID`, `L_CODE`, `T_TERM`, `T_TYPE`).
