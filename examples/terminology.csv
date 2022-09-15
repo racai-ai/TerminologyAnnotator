@@ -1,7 +1,7 @@
-E_ID|L_CODE|T_TERM|
-11111|ro|Paris|
-22222|ro|statului portului|
-33333|ro|ordinul|
-44444|ro|Monitorul Oficial|
-55555|ro|Belgia|
-66666|ro|statului portului|
+E_ID|L_CODE|T_TERM|T_TYPE|
+11111|ro|Paris|Term|
+22222|ro|statului portului|Term|
+33333|ro|ordinul|Term|
+44444|ro|Monitorul Oficial|Term|
+55555|ro|Belgia|Term|
+66666|ro|CFR|Abbrev|
